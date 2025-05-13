@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Kodaikanal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Kodaikanal_Lake.jpg/1200px-Kodaikanal_Lake.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 90vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 4em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .spot {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .spot:hover {
+      transform: scale(1.02);
+    }
+    .spot img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .spot-content {
+      padding: 15px;
+    }
+    .spot-content h3 {
+      margin-top: 0;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .cta a {
+      background: #00695c;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 1.2em;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome to Kodaikanal</h1>
+  <p>The Princess of Hill Stations</p>
+</header>
+
+<section>
+  <h2>Top Tourist Spots in Kodaikanal</h2>
+  <div class="gallery">
+    <div class="spot">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Kodaikanal_Lake.jpg" alt="Kodaikanal Lake">
+      <div class="spot-content">
+        <h3>Kodaikanal Lake</h3>
+        <p>Enjoy paddle boating or a scenic walk around this star-shaped lake surrounded by eucalyptus trees.</p>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Coakers_Walk%2C_Kodaikanal.jpg" alt="Coaker's Walk">
+      <div class="spot-content">
+        <h3>Coaker's Walk</h3>
+        <p>Perfect for morning or evening strolls with panoramic views of the hills and valleys below.</p>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Pillar_Rocks.jpg" alt="Pillar Rocks">
+      <div class="spot-content">
+        <h3>Pillar Rocks</h3>
+        <p>Three vertical granite boulders standing shoulder to shoulder—offering a stunning view and photo opportunity.</p>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Bryant_Park_Kodaikanal.jpg" alt="Bryant Park">
+      <div class="spot-content">
+        <h3>Bryant Park</h3>
+        <p>A beautifully maintained botanical garden, perfect for picnics and floral photography.</p>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Silver_Cascade_Waterfall%2C_Kodaikanal.jpg" alt="Silver Cascade Falls">
+      <div class="spot-content">
+        <h3>Silver Cascade Falls</h3>
+        <p>A 180-feet tall waterfall by the roadside, ideal for a quick photo stop during your drive.</p>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Berijam_Lake%2C_Kodaikanal.jpg" alt="Berijam Lake">
+      <div class="spot-content">
+        <h3>Berijam Lake</h3>
+        <p>A tranquil and lesser-known lake inside the forest reserve, accessible with a permit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>Plan Your Trip Now!</h2>
+  <a href="#">Explore Packages</a>
+</div>
+
+<footer>
+  &copy; 2025 Explore Kodaikanal. All Rights Reserved.
+</footer>
+
+</body>
+</html>
