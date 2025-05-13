@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxora | Handwoven Leather Collection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: crimson;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 50px;
+      font-size: 0.9em;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 40px auto;
+      gap: 20px;
+    }
+
+    .product-card {
+      background: white;
+      width: 260px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .product-info h2 {
+      font-size: 1.2em;
+      margin: 0 0 10px;
+    }
+
+    .price {
+      color: #b12704;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .quantity {
+      margin-bottom: 10px;
+    }
+
+    .quantity input {
+      width: 60px;
+      padding: 5px;
+    }
+
+    button {
+      background: #00695c;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #004d40;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Luxora Leather Collection</h1>
+  <div class="cart-count" id="cartCount">Cart: 0</div>
+</header>
+
+<div class="products-container">
+  <!-- Product 1 -->
+  <div class="product-card" data-product-id="1">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Leather_bag.jpg" alt="Leather Bag 1">
+    <div class="product-info">
+      <h2>Classic Handwoven Bag</h2>
+      <p class="price">₹4,999</p>
+      <div class="quantity">
+        Qty: <input type="number" value="1" min="1" class="qty">
+      </div>
+      <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Product 2 -->
+  <div class="product-card" data-product-id="2">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Leather_messenger_bag.jpg" alt="Messenger Bag">
+    <div class="product-info">
+      <h2>Messenger Leather Bag</h2>
+      <p class="price">₹3,499</p>
+      <div class="quantity">
+        Qty: <input type="number" value="1" min="1" class="qty">
+      </div>
+      <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="product-card" data-product-id="3">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Leather_Backpack.jpg" alt="Backpack">
+    <div class="product-info">
+      <h2>Rustic Leather Backpack</h2>
+      <p class="price">₹5,299</p>
+      <div class="quantity">
+        Qty: <input type="number" value="1" min="1" class="qty">
+      </div>
+      <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Product 4 -->
+  <div class="product-card" data-product-id="4">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Leather_wallets_display.jpg" alt="Wallet">
+    <div class="product-info">
+      <h2>Premium Leather Wallet</h2>
+      <p class="price">₹1,299</p>
+      <div class="quantity">
+        Qty: <input type="number" value="1" min="1" class="qty">
+      </div>
+      <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Luxora. All rights reserved.
+</footer>
+
+<script>
+// Initialize cart count
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cartTotal = cart.length;
+
+function updateCartCount() {
+  cartTotal = cart.reduce((acc, item) => acc + item.qty, 0);
+  document.getElementById("cartCount").innerText = "Cart: " + cartTotal;
+}
+
+// Add to cart
+function addToCart(button) {
+  const productCard = button.closest('.product-card');
+  const productId = productCard.getAttribute('data-product-id');
+  const productName = productCard.querySelector('h2').innerText;
+  const price = parseInt(productCard.querySelector('.price').innerText.replace('₹', '').replace(',', ''));
+  const qty = parseInt(productCard.querySelector('.qty').value);
+  
+  // Check if product already exists in cart
+  const existingProductIndex = cart.findIndex(item => item.productId === productId);
+  if (existingProductIndex !== -1) {
+    cart[existingProductIndex].qty += qty;  // Update quantity if exists
+  } else {
+    cart.push({ productId, name: productName, price, qty });
+  }
+
+  // Save cart to localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+  alert(qty + " item(s) added to cart.");
+}
+
+// Initialize cart count on page load
+updateCartCount();
+</script>
+
+</body>
+</html>
